@@ -9,6 +9,8 @@ cd uwsgi-strophe
 uwsgi --build-plugin .
 ```
 
+The build script automatically clones libstrophe and link it to the plugin
+
 Currently only alarms features are exposed:
 
 ```ini
