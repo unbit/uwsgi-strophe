@@ -53,7 +53,12 @@ static int strophe_alarm_handler_messages(xmpp_conn_t * const conn, void * const
 			ut->custom1 = 0;
 			break;
 		}
-		strophe_send(ctx, conn, (char *) ut->custom0, ut->buf, rlen);
+		char *dst = uwsgi_str((char *) ut->custom0);
+		char *p, *c = NULL;
+		uwsgi_foreach_token(dst, ",", p, c) {
+			strophe_send(ctx, conn, p, ut->buf, rlen);
+		}
+		free(dst);
 	}
 
 	return 1;
