@@ -14,7 +14,7 @@ def get_libstrophe():
         am.write('CFLAGS += -fPIC\n')
         am.close()
     if not os.path.exists('lib/libstrophe.a') or not os.path.exists('include/strophe.h'):
-        os.system('cd libstrophe; ./bootstrap.sh; ./configure --prefix=%s; make; make install' % os.getcwd())
+        os.system('cd libstrophe || ./bootstrap.sh || ./configure --prefix=%s || make || make install' % os.getcwd())
 
 get_libstrophe()
 
