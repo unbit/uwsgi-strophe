@@ -16,7 +16,7 @@ def get_libstrophe():
         am.close()
     if not os.path.exists('lib/libstrophe.a') or not os.path.exists('include/strophe.h'):
         # for some misterious reason we need to call bootstrap.sh 2 times ...
-        os.system('cd libstrophe && ./bootstrap.sh ; ./bootstrap.sh && ./configure --prefix=%s && make && make install' % os.getcwd())
+        os.system('cd libstrophe && ./bootstrap.sh ; ./bootstrap.sh && ./configure --prefix=%s --disable-shared && make && make install' % os.getcwd())
 
 get_libstrophe()
 
