@@ -32,6 +32,8 @@ static void strophe_send(xmpp_ctx_t *ctx, xmpp_conn_t *conn, char *to, char *msg
         xmpp_stanza_add_child(message, body);
 
         xmpp_send(conn, message);
+        xmpp_stanza_release(text);
+        xmpp_stanza_release(body);
         xmpp_stanza_release(message);
 }
 
